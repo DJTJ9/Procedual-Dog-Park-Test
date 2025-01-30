@@ -121,31 +121,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d988abdf3e986e64ba25fc059f7fa46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upNeighbours:
+  UpNeighbours:
   - Tile: {fileID: 3285438950257674177}
-    Weight: 5
+    Weight: 50
   - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
-    Weight: 1
+    Weight: 20
   - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 1
-  downNeighbours:
+    Weight: 5
+  DownNeighbours:
   - Tile: {fileID: 3285438950257674177}
-    Weight: 5
+    Weight: 50
   - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
-    Weight: 1
+    Weight: 20
   - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 1
-  leftNeighbours:
+    Weight: 5
+  LeftNeighbours:
   - Tile: {fileID: 3285438950257674177}
-    Weight: 5
+    Weight: 50
   - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
-    Weight: 1
+    Weight: 0
   - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 1
-  rightNeighbours:
+    Weight: 5
+  RightNeighbours:
   - Tile: {fileID: 3285438950257674177}
-    Weight: 5
+    Weight: 50
   - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
-    Weight: 1
+    Weight: 0
   - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 1
+    Weight: 5
