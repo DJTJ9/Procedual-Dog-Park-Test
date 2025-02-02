@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 431432902072701290}
   - component: {fileID: 8444149342400780019}
   - component: {fileID: 7184706255920764827}
-  - component: {fileID: 1125905875297278052}
   - component: {fileID: 7621110184390123065}
+  - component: {fileID: 1125905875297278052}
   m_Layer: 0
   m_Name: WaterCube 2
   m_TagString: Untagged
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988005930231386754}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: -90}
 --- !u!33 &8444149342400780019
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4a940cbb86b12334bab00e1c379382b2, type: 2}
+  - {fileID: 2100000, guid: c5f0c43a96fa00f4a92ccff0a949ed57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,6 +88,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7621110184390123065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988005930231386754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d988abdf3e986e64ba25fc059f7fa46c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpNeighbours:
+  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
+    Weight: 1000
+  - Tile: {fileID: 7621110184390123065, guid: 9d0b95cce1b0733419d07a668c159526, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 98fed606f958b90439e8d344beaa5ee6, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
+    Weight: 10
+  DownNeighbours:
+  - Tile: {fileID: 7621110184390123065, guid: e2fc2cc45979f7442910a338f5c9821b, type: 3}
+    Weight: 100
+  - Tile: {fileID: 7621110184390123065, guid: 98fed606f958b90439e8d344beaa5ee6, type: 3}
+    Weight: 10
+  LeftNeighbours:
+  - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
+    Weight: 100
+  - Tile: {fileID: 7621110184390123065}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 8bc541bace115c949b4818513080b7fb, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: f302a9e715eaffa4988e452c945c1c05, type: 3}
+    Weight: 10
+  RightNeighbours:
+  - Tile: {fileID: 7621110184390123065}
+    Weight: 100
+  - Tile: {fileID: 7621110184390123065, guid: 637c7bb7f353f06499e493f6d15a2cbb, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 0c7e5d5297b92e543b7e31f27a4252a8, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 75ca0cd6cb169b54bbd15bf686c149e9, type: 3}
+    Weight: 10
 --- !u!65 &1125905875297278052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -109,39 +153,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7621110184390123065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988005930231386754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d988abdf3e986e64ba25fc059f7fa46c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpNeighbours:
-  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
-    Weight: 100
-  - Tile: {fileID: 7621110184390123065, guid: 9d0b95cce1b0733419d07a668c159526, type: 3}
-    Weight: 10
-  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 10
-  - Tile: {fileID: 3285438950257674177, guid: 8dbd77c588e2ad04ab8f66398f1a22fb, type: 3}
-    Weight: 2
-  DownNeighbours:
-  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 10
-  LeftNeighbours:
-  - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
-    Weight: 10
-  RightNeighbours:
-  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
-    Weight: 100
-  - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
-    Weight: 10
-  - Tile: {fileID: 7621110184390123065, guid: 9d0b95cce1b0733419d07a668c159526, type: 3}
-    Weight: 10
-  - Tile: {fileID: 3285438950257674177, guid: 8dbd77c588e2ad04ab8f66398f1a22fb, type: 3}
-    Weight: 2

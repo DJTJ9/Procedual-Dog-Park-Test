@@ -3,77 +3,77 @@ using UnityEngine;
 
 public class DrunkardsWalk : MonoBehaviour
 {
-    public int steps = 20;
+    public int Steps;
     public float TurnProbability;
-    public Vector3Int startPoint;
-    public GameObject pathPrefab;
-    public Transform gridParent;
+    public Vector3Int StartPoint;
+    public GameObject PathPrefab;
 
-    public void GenerateDrunkardsWalk(Vector3Int startPoint, int steps, int dimensions, List<Cell> grid, GameObject pathPrefab) {
-        Vector3Int currentPosition = startPoint;
+    public void GenerateDrunkardsWalk(int dimensions, List<Cell> grid) {
+        Vector3Int currentPosition = StartPoint;
 
-        Debug.Log($"Start Generating Drunkard's Walk from {currentPosition}");
+    Debug.Log($"Start Generating Drunkard's Walk from {currentPosition}");
+
+    if (!IsPositionValid(currentPosition, dimensions)) {
+        Debug.LogError($"Invalid start position: {currentPosition}");
+        return;
+    }
+
+    // Die erste Richtung wird zufällig gewählt
+    int lastDirection = Random.Range(0, 4);
+
+    for (int i = 0; i < Steps; i++) {
+        int currentDirection;
+
+        // Wähle eine neue Richtung, die nicht die entgegengesetzte zur letzten ist
+        do {
+            currentDirection = Random.value > TurnProbability ? lastDirection : Random.Range(0, 4);
+        } while (IsOppositeDirection(lastDirection, currentDirection));
+
+        // Bewege dich basierend auf der aktuellen Richtung
+        switch (currentDirection) {
+            case 0: // Nach links
+                currentPosition.x = Mathf.Max(0, currentPosition.x - 1);
+                break;
+            case 1: // Nach rechts
+                currentPosition.x = Mathf.Min(dimensions - 1, currentPosition.x + 1);
+                break;
+            case 2: // Vorwärts
+                currentPosition.z = Mathf.Min(dimensions - 1, currentPosition.z + 1);
+                break;
+            case 3: // Rückwärts
+                currentPosition.z = Mathf.Max(0, currentPosition.z - 1);
+                break;
+        }
 
         if (!IsPositionValid(currentPosition, dimensions)) {
-            Debug.LogError($"Invalid start position: {currentPosition}");
-            return;
+            Debug.LogError($"Invalid position at step {i}: {currentPosition}");
+            continue;
         }
 
-        // Die erste Richtung wird zufällig gewählt
-        int lastDirection = Random.Range(0, 4);
+        // Indiziere die Position in der Grid-Liste
+        int gridIndex = currentPosition.x + currentPosition.z * dimensions;
+        var cell = grid[gridIndex];
 
-        for (int i = 0; i < steps; i++) {
-            int currentDirection;
-
-            // Wähle eine neue Richtung, die nicht die entgegengesetzte zur letzten ist
-            do {
-                currentDirection = Random.value > TurnProbability ? lastDirection : Random.Range(0, 4);
-            } while (IsOppositeDirection(lastDirection, currentDirection));
-
-            // Bewege dich basierend auf der aktuellen Richtung
-            switch (currentDirection) {
-                case 0: // Nach links
-                    currentPosition.x = Mathf.Max(0, currentPosition.x - 1);
-                    break;
-                case 1: // Nach rechts
-                    currentPosition.x = Mathf.Min(dimensions - 1, currentPosition.x + 1);
-                    break;
-                case 2: // Vorwärts
-                    currentPosition.z = Mathf.Min(dimensions - 1, currentPosition.z + 1);
-                    break;
-                case 3: // Rückwärts
-                    currentPosition.z = Mathf.Max(0, currentPosition.z - 1);
-                    break;
-            }
-
-            if (!IsPositionValid(currentPosition, dimensions)) {
-                Debug.LogError($"Invalid position at step {i}: {currentPosition}");
-                continue;
-            }
-
-            // Holt die Zelle an der neuen Position
-            var cell = grid[i];
-
-            if (cell == null) {
-                Debug.LogError($"Cell is null at position: {currentPosition}");
-                continue;
-            }
-
-            if (cell.Collapsed) {
-                Debug.Log($"Cell already collapsed at: {currentPosition}");
-                continue;
-            }
-
-            // Markiere die Zelle als Weg
-            cell.Collapsed = true;
-
-            // Instanziere die grafische Darstellung des Wegs
-            Vector3 worldPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
-            Instantiate(pathPrefab, worldPosition, Quaternion.identity);
-
-            // Aktualisiere die letzte Richtung
-            lastDirection = currentDirection;
+        if (cell == null) {
+            Debug.LogError($"Cell is null at position: {currentPosition}");
+            continue;
         }
+
+        if (cell.Collapsed) {
+            Debug.Log($"Cell already collapsed at: {currentPosition}");
+            continue;
+        }
+
+        // Markiere die Zelle als Weg
+        cell.Collapsed = true;
+
+        // Instanziere die grafische Darstellung des Wegs
+        Vector3 worldPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
+        Instantiate(PathPrefab, worldPosition, Quaternion.identity);
+
+        // Aktualisiere die letzte Richtung
+        lastDirection = currentDirection;
+    }
     }
 
 // Helferfunktion, um zu überprüfen, ob zwei Richtungen entgegengesetzt sind

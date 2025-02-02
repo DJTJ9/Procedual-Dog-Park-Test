@@ -12,22 +12,17 @@ public class WFC : MonoBehaviour
     public TileWeightBundle[] TileObjects;
     public List<Cell> GridComponents;
     public Cell CellObj;
-    
-    public int Steps = 20;
-    public Vector3Int StartPoint;
-    public GameObject PathPrefab;
 
-    private DrunkardsWalk _drunkardsWalk;
+    public DrunkardsWalk DrunkardsWalk;
 
-    int iterations = 0;
+    private int _iterations = 0;
     
-    private GridManager gridManager;
 
     void Awake() {
-        _drunkardsWalk = GetComponent<DrunkardsWalk>();
+        DrunkardsWalk = GetComponent<DrunkardsWalk>();
         GridComponents = new List<Cell>();
         InitializeGrid();
-        // _drunkardsWalk.GenerateDrunkardsWalk(StartPoint, Steps, Dimensions, GridComponents, PathPrefab);
+        DrunkardsWalk.GenerateDrunkardsWalk(Dimensions, GridComponents);
         StartCoroutine(CheckEntropy());
     }
 
@@ -50,7 +45,12 @@ public class WFC : MonoBehaviour
 
         tempGrid.Sort((a, b) => { return a.TileOptions.Length - b.TileOptions.Length; });
 
+        if (tempGrid.Count == 0) {
+            yield break;
+        }
+        
         int arrLength = tempGrid[0].TileOptions.Length;
+        
         int stopIndex = default;
 
         for (int i = 1; i < tempGrid.Count; i++) {
@@ -64,54 +64,9 @@ public class WFC : MonoBehaviour
             tempGrid.RemoveRange(stopIndex, tempGrid.Count - stopIndex);
         }
 
-        yield return new WaitForSeconds(0.01f);
+        yield return null;
         
         CollapseCell(tempGrid[UnityEngine.Random.Range(0, tempGrid.Count)]);
-        
-
-        // CollapseCell(tempGrid);
-        // while (true)
-        // {
-        //     // Finde alle nicht-kollabierten Zellen
-        //     List<Cell> nonCollapsedCells = new List<Cell>();
-        //
-        //     for (int z = 0; z < gridManager.gridSize; z++)
-        //     {
-        //         for (int x = 0; x < gridManager.gridSize; x++)
-        //         {
-        //             Cell cell = gridManager.GetCell(new Vector3Int(x, 0, z));
-        //             if (!cell.Collapsed)
-        //             {
-        //                 nonCollapsedCells.Add(cell);
-        //             }
-        //         }
-        //     }
-        //
-        //     // Sortiere nach Entropie
-        //     if (nonCollapsedCells.Count == 0)
-        //         yield break;
-        //
-        //     nonCollapsedCells.Sort((a, b) => a.TileOptions.Length - b.TileOptions.Length);
-        //     
-        //     int arrLength = nonCollapsedCells.Count;
-        //     int stopIndex = default;
-        //
-        //     for (int i = 1; i < nonCollapsedCells.Count; i++) {
-        //         if (nonCollapsedCells[i].TileOptions.Length > arrLength) {
-        //             stopIndex = i;
-        //             break;
-        //         }
-        //     }
-        //
-        //     if (stopIndex > 0) {
-        //         nonCollapsedCells.RemoveRange(stopIndex, nonCollapsedCells.Count - stopIndex);
-        //     }
-        //
-        //     // Kollabiere die Zelle mit der niedrigsten Entropie
-        //     CollapseCell(nonCollapsedCells[UnityEngine.Random.Range(0, nonCollapsedCells.Count)]);
-        //
-        //     yield return new WaitForSeconds(0.01f); // Zur Visualisierung
-        // }
     }
 
     void CollapseCell(Cell cellToCollapse)
@@ -163,7 +118,6 @@ public class WFC : MonoBehaviour
             for (int x = 0; x < Dimensions; x++) {
                 var index = x + z * Dimensions;
                 if (GridComponents[index].Collapsed) {
-                    Debug.Log("called");
                     newGenerationCell[index] = GridComponents[index];
                 }
                 else {
@@ -244,9 +198,9 @@ public class WFC : MonoBehaviour
         }
 
         GridComponents = newGenerationCell;
-        iterations++;
+        _iterations++;
 
-        if (iterations < Dimensions * Dimensions) {
+        if (_iterations < Dimensions * Dimensions) {
             StartCoroutine(CheckEntropy());
         }
     }

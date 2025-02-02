@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988005930231386754}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &8444149342400780019
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -122,26 +122,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpNeighbours:
-  - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
+  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
+    Weight: 1000
+  - Tile: {fileID: 7621110184390123065, guid: 9d0b95cce1b0733419d07a668c159526, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 98fed606f958b90439e8d344beaa5ee6, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
     Weight: 10
   DownNeighbours:
-  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
+  - Tile: {fileID: 7621110184390123065, guid: 16b6db4a9c108d14089b98a0e7d32e6f, type: 3}
     Weight: 100
+  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 8bc541bace115c949b4818513080b7fb, type: 3}
+    Weight: 10
+  LeftNeighbours:
   - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
     Weight: 10
-  - Tile: {fileID: 7621110184390123065, guid: 637c7bb7f353f06499e493f6d15a2cbb, type: 3}
-    Weight: 10
-  - Tile: {fileID: 3285438950257674177, guid: 8dbd77c588e2ad04ab8f66398f1a22fb, type: 3}
-    Weight: 2
-  LeftNeighbours:
-  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
+  - Tile: {fileID: 7621110184390123065, guid: 8da6165827e222b4199078af0bc877ee, type: 3}
     Weight: 100
-  - Tile: {fileID: 7621110184390123065, guid: 637c7bb7f353f06499e493f6d15a2cbb, type: 3}
-    Weight: 10
-  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 10
-  - Tile: {fileID: 3285438950257674177, guid: 8dbd77c588e2ad04ab8f66398f1a22fb, type: 3}
-    Weight: 2
+  - Tile: {fileID: 7621110184390123065, guid: 8bc541bace115c949b4818513080b7fb, type: 3}
+    Weight: 100
   RightNeighbours:
-  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
+  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
+    Weight: 1000
+  - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: ca9d27baa458a174fb0de57e4f738ead, type: 3}
+    Weight: 4
+  - Tile: {fileID: 7621110184390123065, guid: 9d0b95cce1b0733419d07a668c159526, type: 3}
     Weight: 10
