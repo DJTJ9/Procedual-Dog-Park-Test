@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class WFC : MonoBehaviour
 {
+    //TODO: 
+    /*Kleine Seeflecken nach dem Algorhitmus miteinanderverbinden (maybe)
+     * 
+     */
+    
     public int Dimensions;
     public TileWeightBundle[] TileObjects;
     public List<Cell> GridComponents;
@@ -17,7 +20,6 @@ public class WFC : MonoBehaviour
 
     private int _iterations = 0;
     
-
     void Awake() {
         DrunkardsWalk = GetComponent<DrunkardsWalk>();
         GridComponents = new List<Cell>();
@@ -131,26 +133,16 @@ public class WFC : MonoBehaviour
                         Cell up = GridComponents[x + (z - 1) * Dimensions];
                         List<TileWeightBundle> validOptions = new List<TileWeightBundle>();
 
-                        foreach (TileWeightBundle possibleOptions in up.TileOptions) {
-                            var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
-                            var valid = TileObjects[valOption].Tile.UpNeighbours;
-
-                            validOptions = validOptions.Concat(valid).ToList();
+                        if (up.IsPath) {
+                            validOptions.AddRange(up.TileOptions.Where(tile => tile.Tile.CompareTag("PathNeighbour")));
                         }
+                        else {
+                            foreach (TileWeightBundle possibleOptions in up.TileOptions) {
+                                var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
+                                var valid = TileObjects[valOption].Tile.UpNeighbours;
 
-                        CheckValidity(options, validOptions);
-                    }
-
-                    //update right
-                    if (x < Dimensions - 1) {
-                        Cell right = GridComponents[x + 1 + z * Dimensions];
-                        List<TileWeightBundle> validOptions = new List<TileWeightBundle>();
-
-                        foreach (TileWeightBundle possibleOptions in right.TileOptions) {
-                            var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
-                            var valid = TileObjects[valOption].Tile.LeftNeighbours;
-
-                            validOptions = validOptions.Concat(valid).ToList();
+                                validOptions = validOptions.Concat(valid).ToList();
+                            }
                         }
 
                         CheckValidity(options, validOptions);
@@ -160,12 +152,17 @@ public class WFC : MonoBehaviour
                     if (z < Dimensions - 1) {
                         Cell down = GridComponents[x + (z + 1) * Dimensions];
                         List<TileWeightBundle> validOptions = new List<TileWeightBundle>();
+                        
+                        if (down.IsPath) {
+                            validOptions.AddRange(down.TileOptions.Where(tile => tile.Tile.CompareTag("PathNeighbour")));
+                        }
+                        else {
+                            foreach (TileWeightBundle possibleOptions in down.TileOptions) {
+                                var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
+                                var valid = TileObjects[valOption].Tile.DownNeighbours;
 
-                        foreach (TileWeightBundle possibleOptions in down.TileOptions) {
-                            var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
-                            var valid = TileObjects[valOption].Tile.DownNeighbours;
-
-                            validOptions = validOptions.Concat(valid).ToList();
+                                validOptions = validOptions.Concat(valid).ToList();
+                            }
                         }
 
                         CheckValidity(options, validOptions);
@@ -176,11 +173,36 @@ public class WFC : MonoBehaviour
                         Cell left = GridComponents[x - 1 + z * Dimensions];
                         List<TileWeightBundle> validOptions = new List<TileWeightBundle>();
 
-                        foreach (TileWeightBundle possibleOptions in left.TileOptions) {
-                            var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
-                            var valid = TileObjects[valOption].Tile.RightNeighbours;
+                        if (left.IsPath) {
+                            validOptions.AddRange(left.TileOptions.Where(tile => tile.Tile.CompareTag("PathNeighbour")));
+                        }
+                        else {
+                            foreach (TileWeightBundle possibleOptions in left.TileOptions) {
+                                var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
+                                var valid = TileObjects[valOption].Tile.RightNeighbours;
 
-                            validOptions = validOptions.Concat(valid).ToList();
+                                validOptions = validOptions.Concat(valid).ToList();
+                            }
+                        }
+
+                        CheckValidity(options, validOptions);
+                    }
+                    
+                    //update right
+                    if (x < Dimensions - 1) {
+                        Cell right = GridComponents[x + 1 + z * Dimensions];
+                        List<TileWeightBundle> validOptions = new List<TileWeightBundle>();
+                        
+                        if (right.IsPath) {
+                            validOptions.AddRange(right.TileOptions.Where(tile => tile.Tile.CompareTag("PathNeighbour")));
+                        }
+                        else {
+                            foreach (TileWeightBundle possibleOptions in right.TileOptions) {
+                                var valOption = Array.FindIndex(TileObjects, obj => obj == possibleOptions);
+                                var valid = TileObjects[valOption].Tile.LeftNeighbours;
+
+                                validOptions = validOptions.Concat(valid).ToList();
+                            }
                         }
 
                         CheckValidity(options, validOptions);
@@ -214,18 +236,49 @@ public class WFC : MonoBehaviour
         //         optionList.RemoveAt(x);
         //     }
         // }
+        
+        // Entfernen Sie Duplikate basierend auf dem Schlüssel "Tile"
+        Dictionary<Tile, TileWeightBundle> validOptionMap = validOption
+            .Where(bundle => bundle.Tile != null) // Entfernt alle Einträge, bei denen Tile null ist
+            .GroupBy(bundle => bundle.Tile)
+            .ToDictionary(group => group.Key, group => group.First());
+        
+        foreach (var bundle in validOption)
+        {
+            if (bundle.Tile == null)
+            {
+                Debug.LogWarning("Ein Tile in der validOption-Liste ist null und wird übersprungen.");
+                continue; // Überspringe dieses Element
+            }
+
+            if (!validOptionMap.ContainsKey(bundle.Tile))
+            {
+                validOptionMap.Add(bundle.Tile, bundle);
+            }
+            else
+            {
+                Debug.LogWarning($"Duplikat gefunden: {bundle.Tile.name}. Überspringe Eintrag.");
+            }
+        }
 
         for (int x = optionList.Count - 1; x >= 0; x--) {
             var optionTile = optionList[x].Tile; // Hol dir das Tile aus der aktuellen Option
-        
-            // Suche in validOption nach einem Bundle mit dem gleichen Tile
-            var match = validOption.Find(bundle => bundle.Tile.Equals(optionTile));
-        
-            if (match.Tile != null) {
-                // Aktualisiere das Gewicht des Tiles in der Option
-                optionList[x] = new TileWeightBundle {
+            // // Suche in validOption nach einem Bundle mit dem gleichen Tile
+            // var match = validOption.Find(bundle => bundle.Tile.Equals(optionTile));
+            //
+            // if (match.Tile != null) {
+            //     // Aktualisiere das Gewicht des Tiles in der Option
+            //     optionList[x] = new TileWeightBundle {
+            //         Tile = optionTile,
+            //         Weight = match.Weight // Update das Gewicht
+            //     };
+            // }
+            if (validOptionMap.TryGetValue(optionTile, out var match))
+            {
+                optionList[x] = new TileWeightBundle
+                {
                     Tile = optionTile,
-                    Weight = match.Weight // Update das Gewicht
+                    Weight = match.Weight
                 };
             }
             else {

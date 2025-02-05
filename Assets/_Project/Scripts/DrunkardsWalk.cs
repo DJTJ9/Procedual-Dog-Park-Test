@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DrunkardsWalk : MonoBehaviour
@@ -10,8 +11,33 @@ public class DrunkardsWalk : MonoBehaviour
 
     public void GenerateDrunkardsWalk(int dimensions, List<Cell> grid) {
         Vector3Int currentPosition = StartPoint;
+        int startIndex = currentPosition.x + currentPosition.z * dimensions;
+        Cell startCell = grid[startIndex];
 
-    Debug.Log($"Start Generating Drunkard's Walk from {currentPosition}");
+        if (startCell != null && !startCell.IsPath) {
+            startCell.MarkAsPath(); // Markiere die Zelle als Pfad
+            
+            // // Falls ein Tile gesetzt wird, wähle eine Standard-Pfad-Option
+            // if (startCell.TileOptions != null && startCell.TileOptions.Length > 0) {
+            //     // Finde das passende PathTile (z. B. mit Tag "PathTile")
+            //     var pathTile = startCell.TileOptions.FirstOrDefault(bundle => 
+            //         bundle.Tile.CompareTag("PathTile"));
+            //
+            //     if (pathTile.Tile != null) {
+            //         // Instanziere das PathPrefab am Startpunkt
+            Vector3 worldPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
+            Instantiate(PathPrefab, worldPosition, Quaternion.identity);
+            //
+            //         // Setze die Zelle auf die Auswahl des PathTiles und markiere sie als "kollabiert"
+            //         startCell.TileOptions = new TileWeightBundle[] { pathTile };
+            //         startCell.Collapsed = true;
+            //     } else {
+            //         Debug.LogWarning($"No valid PathTile found for StartPoint at {currentPosition}");
+            //     }
+            // }
+        }
+
+        Debug.Log($"Start Generating Drunkard's Walk from {currentPosition}");
 
     if (!IsPositionValid(currentPosition, dimensions)) {
         Debug.LogError($"Invalid start position: {currentPosition}");
@@ -66,10 +92,12 @@ public class DrunkardsWalk : MonoBehaviour
 
         // Markiere die Zelle als Weg
         cell.Collapsed = true;
+        
+        if(!cell.IsPath) cell.MarkAsPath();
 
         // Instanziere die grafische Darstellung des Wegs
         Vector3 worldPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
-        Instantiate(PathPrefab, worldPosition, Quaternion.identity);
+        Instantiate(PathPrefab, worldPosition, PathPrefab.transform.rotation);
 
         // Aktualisiere die letzte Richtung
         lastDirection = currentDirection;
