@@ -103,7 +103,7 @@ MonoBehaviour:
   UpNeighbours:
   - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
     Weight: 10
-  - Tile: {fileID: 7621110184390123065, guid: 16b6db4a9c108d14089b98a0e7d32e6f, type: 3}
+  - Tile: {fileID: 7621110184390123065, guid: ca9d27baa458a174fb0de57e4f738ead, type: 3}
     Weight: 10
   DownNeighbours:
   - Tile: {fileID: 7621110184390123065, guid: e2fc2cc45979f7442910a338f5c9821b, type: 3}

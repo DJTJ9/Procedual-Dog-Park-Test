@@ -228,15 +228,7 @@ public class WFC : MonoBehaviour
     }
 
     void CheckValidity(List<TileWeightBundle> optionList, List<TileWeightBundle> validOption) {
-        // for (int x = optionList.Count - 1; x >= 0; x--)
-        // {
-        //     var element = optionList[x];
-        //     if (!validOption.Contains(element))
-        //     {
-        //         optionList.RemoveAt(x);
-        //     }
-        // }
-        
+    
         // Entfernen Sie Duplikate basierend auf dem Schlüssel "Tile"
         Dictionary<Tile, TileWeightBundle> validOptionMap = validOption
             .Where(bundle => bundle.Tile != null) // Entfernt alle Einträge, bei denen Tile null ist
@@ -247,25 +239,25 @@ public class WFC : MonoBehaviour
         {
             if (bundle.Tile == null)
             {
-                Debug.LogWarning("Ein Tile in der validOption-Liste ist null und wird übersprungen.");
+                // Debug.LogWarning("Ein Tile in der validOption-Liste ist null und wird übersprungen.");
                 continue; // Überspringe dieses Element
             }
-
+        
             if (!validOptionMap.ContainsKey(bundle.Tile))
             {
                 validOptionMap.Add(bundle.Tile, bundle);
             }
-            else
-            {
-                Debug.LogWarning($"Duplikat gefunden: {bundle.Tile.name}. Überspringe Eintrag.");
-            }
+            // else
+            // {
+            //     Debug.LogWarning($"Duplikat gefunden: {bundle.Tile.name}. Überspringe Eintrag.");
+            // }
         }
 
         for (int x = optionList.Count - 1; x >= 0; x--) {
             var optionTile = optionList[x].Tile; // Hol dir das Tile aus der aktuellen Option
-            // // Suche in validOption nach einem Bundle mit dem gleichen Tile
+            // Suche in validOption nach einem Bundle mit dem gleichen Tile
             // var match = validOption.Find(bundle => bundle.Tile.Equals(optionTile));
-            //
+            
             // if (match.Tile != null) {
             //     // Aktualisiere das Gewicht des Tiles in der Option
             //     optionList[x] = new TileWeightBundle {

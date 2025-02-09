@@ -121,6 +121,8 @@ MonoBehaviour:
   DownNeighbours:
   - Tile: {fileID: 2060010359385170977, guid: 3152b812a12af3f4bbf20a5c292599e1, type: 3}
     Weight: 1000
+  - Tile: {fileID: 2838271202629704503, guid: a4088b0a38233a9409bcee1e29ba6235, type: 3}
+    Weight: 100
   - Tile: {fileID: 2060010359385170977, guid: a3543838b7a30ea45adcd29a50f3468a, type: 3}
     Weight: 10
   - Tile: {fileID: 2060010359385170977, guid: e297d074e86688641bebb498a1621e09, type: 3}

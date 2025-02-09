@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,6 +11,7 @@ public class QuadGenerator : MonoBehaviour
         GenerateMesh();
     }
 
+    [Button]
     void GenerateMesh()
     {
         int vertsPerRow = Subdivisions + 1;

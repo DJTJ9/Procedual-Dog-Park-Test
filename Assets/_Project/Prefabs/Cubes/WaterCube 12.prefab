@@ -103,13 +103,21 @@ MonoBehaviour:
   UpNeighbours:
   - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
     Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: ca9d27baa458a174fb0de57e4f738ead, type: 3}
+    Weight: 10
   DownNeighbours:
+  - Tile: {fileID: 7621110184390123065, guid: 16b6db4a9c108d14089b98a0e7d32e6f, type: 3}
+    Weight: 100
   - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
     Weight: 100
   LeftNeighbours:
   - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
     Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 8da6165827e222b4199078af0bc877ee, type: 3}
+    Weight: 10
   RightNeighbours:
+  - Tile: {fileID: 7621110184390123065, guid: 98fed606f958b90439e8d344beaa5ee6, type: 3}
+    Weight: 100
   - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
     Weight: 100
 --- !u!65 &1125905875297278052

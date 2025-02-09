@@ -115,9 +115,9 @@ MonoBehaviour:
   - Tile: {fileID: 7621110184390123065, guid: 9d0b95cce1b0733419d07a668c159526, type: 3}
     Weight: 10
   - Tile: {fileID: 7621110184390123065, guid: 0c7e5d5297b92e543b7e31f27a4252a8, type: 3}
-    Weight: 10
+    Weight: 100
   - Tile: {fileID: 7621110184390123065, guid: 75ca0cd6cb169b54bbd15bf686c149e9, type: 3}
-    Weight: 10
+    Weight: 100
   LeftNeighbours:
   - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
     Weight: 1000
@@ -131,6 +131,10 @@ MonoBehaviour:
   - Tile: {fileID: 7621110184390123065, guid: e2fc2cc45979f7442910a338f5c9821b, type: 3}
     Weight: 100
   - Tile: {fileID: 7621110184390123065, guid: 16b6db4a9c108d14089b98a0e7d32e6f, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 8bc541bace115c949b4818513080b7fb, type: 3}
+    Weight: 10
+  - Tile: {fileID: 7621110184390123065, guid: 8a916042f3745af44856a0585cc6be12, type: 3}
     Weight: 10
 --- !u!65 &1125905875297278052
 BoxCollider:

@@ -51,12 +51,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GrasHardness: -1.27
+    - _GrasHardness: -6.51
     - _GrasRadius: -0.18
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WaterHardness: 0.06
-    - _WaterRadius: 0.6
+    - _WaterRadius: 0.64
     m_Colors:
     - _GrasColor: {r: 0.10588237, g: 0.6313726, b: 0.094117604, a: 1}
     - _WaterColor: {r: 0.082352884, g: 0.26666668, b: 0.8313726, a: 0}

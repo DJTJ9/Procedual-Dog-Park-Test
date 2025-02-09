@@ -26,7 +26,7 @@ public class DrunkardsWalk : MonoBehaviour
             //     if (pathTile.Tile != null) {
             //         // Instanziere das PathPrefab am Startpunkt
             Vector3 worldPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
-            Instantiate(PathPrefab, worldPosition, Quaternion.identity);
+            Instantiate(PathPrefab, worldPosition, PathPrefab.transform.rotation);
             //
             //         // Setze die Zelle auf die Auswahl des PathTiles und markiere sie als "kollabiert"
             //         startCell.TileOptions = new TileWeightBundle[] { pathTile };
@@ -59,15 +59,19 @@ public class DrunkardsWalk : MonoBehaviour
         switch (currentDirection) {
             case 0: // Nach links
                 currentPosition.x = Mathf.Max(0, currentPosition.x - 1);
+                if (currentPosition.x == 0) i--;
                 break;
             case 1: // Nach rechts
                 currentPosition.x = Mathf.Min(dimensions - 1, currentPosition.x + 1);
+                if (currentPosition.x == dimensions - 1) i--;
                 break;
             case 2: // Vorwärts
                 currentPosition.z = Mathf.Min(dimensions - 1, currentPosition.z + 1);
+                if (currentPosition.z == dimensions - 1) i--;
                 break;
             case 3: // Rückwärts
                 currentPosition.z = Mathf.Max(0, currentPosition.z - 1);
+                if (currentPosition.z == 0) i--;
                 break;
         }
 
