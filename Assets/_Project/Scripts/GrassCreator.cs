@@ -18,8 +18,8 @@ public class GrassCreator : MonoBehaviour
     public GameObject Ball;
     public Material GrassMaterial;
 
-    private const int zero = 0;
-    private const int one = 1;
+    private const int Zero = 0;
+    private const int One = 1;
 
     private MeshRenderer grassRenderer;
 
@@ -41,12 +41,12 @@ public class GrassCreator : MonoBehaviour
         // grassRenderer.sharedMaterial.SetColor("_GrassBottomColor", Color.magenta);
         for (int z = -GrassSize; z <= GrassSize; z++) {
             for (int x = -GrassSize; x <= GrassSize; x++) {
-                Vector3 position = new Vector3(x / GrassSubdivisions + Random.Range(-GrassRandomDistribution, GrassRandomDistribution), zero,
+                Vector3 position = new Vector3(x / GrassSubdivisions + Random.Range(-GrassRandomDistribution, GrassRandomDistribution), Zero,
                     z / GrassSubdivisions + Random.Range(-GrassRandomDistribution, GrassRandomDistribution));
                 GameObject grass = Instantiate(GrassPrefab, transform.position + position, Quaternion.Euler(-90, 0, 0),
                     GrassParent);
                 grass.transform.localScale =
-                    new Vector3(one, 0.25f * Random.Range(MinGrassHeight, MaxGrassHeight), one);
+                    new Vector3(One, 0.25f * Random.Range(MinGrassHeight, MaxGrassHeight), One);
             }
         }
     }

@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Tile : MonoBehaviour
 {
@@ -9,18 +9,35 @@ public class Tile : MonoBehaviour
     public TileWeightBundle[] RightNeighbours;
 
 
-    // Überschreibe Equals für allgemeine Vergleiche
-    public override bool Equals(object obj) {
-        if (obj is Tile other) {
-            return this == other; // Reuse von == Implementierung
+    public override bool Equals(object obj)
+    {
+        if (obj is Tile other && !ReferenceEquals(other, null))
+        {
+            return name == other.name; // Vergleich basierend auf Namen
         }
-
         return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return name?.GetHashCode() ?? 0;
+    }
+
+    public static bool operator ==(Tile tile1, Tile tile2)
+    {
+        if (ReferenceEquals(tile1, tile2)) return true;
+        if (ReferenceEquals(tile1, null) || ReferenceEquals(tile2, null)) return false;
+        return tile1.name == tile2.name;
+    }
+
+    public static bool operator !=(Tile tile1, Tile tile2)
+    {
+        return !(tile1 == tile2);
     }
 }
 
-[System.Serializable]
-public struct TileWeightBundle
+[Serializable]
+public struct TileWeightBundle : IEquatable<TileWeightBundle>
 {
     public Tile Tile;
     public int Weight;
@@ -40,4 +57,15 @@ public struct TileWeightBundle
     }
 
 
+    public bool Equals(TileWeightBundle other) {
+        return Equals(Tile, other.Tile);
+    }
+
+    public override bool Equals(object obj) {
+        return obj is TileWeightBundle other && Equals(other);
+    }
+
+    public override int GetHashCode() {
+        return (Tile != null ? Tile.GetHashCode() : 0);
+    }
 }
