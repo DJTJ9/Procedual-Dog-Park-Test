@@ -21,6 +21,13 @@ public class Cell : MonoBehaviour
     
     public void MarkAsPath()
     {
+        if (Collapsed)
+        {
+            Debug.LogWarning($"[MarkAsPath] Versuch, eine bereits kollabierte Zelle erneut als Weg zu markieren: {this.name}");
+            return;
+        }
+
+        Debug.Log($"[MarkAsPath] Markiere Zelle {this.name} als Weg.");
         IsPath = true;
         Collapsed = true;
     }

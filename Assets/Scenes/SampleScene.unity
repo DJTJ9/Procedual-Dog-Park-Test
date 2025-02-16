@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 104395059}
-  - component: {fileID: 104395058}
+  - component: {fileID: 104395061}
   - component: {fileID: 104395060}
   m_Layer: 0
   m_Name: MapGenerator
@@ -268,7 +268,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &104395058
+--- !u!4 &104395059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104395057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &104395060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,7 +292,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 104395057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea1018f92141c843bcd1835e4b3c51d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3efd28496c5c9e24b8d8735008cc0491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Steps: 60
+  TurnProbability: 0.2
+  StartPoint: {x: 0, y: 0, z: 0}
+  PathPrefab: {fileID: 2544409382091199561, guid: f8dbc2c8e377823489a9f4f389cf250d, type: 3}
+--- !u!114 &104395061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104395057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99267d5281538b8489f3bfe36260c213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Dimensions: 20
@@ -319,37 +350,6 @@ MonoBehaviour:
   GridComponents: []
   CellObj: {fileID: 4059871046168062458, guid: da1441d64ff04b341a7ca83a04059fe1, type: 3}
   DrunkardsWalk: {fileID: 104395060}
---- !u!4 &104395059
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104395057}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &104395060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104395057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3efd28496c5c9e24b8d8735008cc0491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Steps: 60
-  TurnProbability: 0.2
-  StartPoint: {x: 0, y: 0, z: 0}
-  PathPrefab: {fileID: 2544409382091199561, guid: f8dbc2c8e377823489a9f4f389cf250d, type: 3}
 --- !u!4 &165738779 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1468434254671713084, guid: a4088b0a38233a9409bcee1e29ba6235, type: 3}
@@ -2300,51 +2300,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8529803409389534284, guid: 3152b812a12af3f4bbf20a5c292599e1, type: 3}
   m_PrefabInstance: {fileID: 73203744}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1881560473
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1881560474}
-  - component: {fileID: 1881560475}
-  m_Layer: 0
-  m_Name: GridManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1881560474
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881560473}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.176525, y: -70.72809, z: 10.786808}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1881560475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1881560473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea7864800e92804ea8b34de41ae20ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: 20
 --- !u!4 &1882215917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8529803409389534284, guid: 4d112c7a222466c418ef65807af3077d, type: 3}
@@ -2801,46 +2756,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142298277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea1018f92141c843bcd1835e4b3c51d, type: 3}
+  m_Script: {fileID: 11500000, guid: 99267d5281538b8489f3bfe36260c213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dimensions: 20
-  TileObjects:
-  - Tile: {fileID: 7375780659327575433, guid: 15a0d38a6ef18c948bc2f5a92129ce29, type: 3}
-    Weight: 100
-  - Tile: {fileID: 7621110184390123065, guid: 4fdc9fd98b545544caad470db9a8ba0d, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 8da6165827e222b4199078af0bc877ee, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 637c7bb7f353f06499e493f6d15a2cbb, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: ca9d27baa458a174fb0de57e4f738ead, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: e2fc2cc45979f7442910a338f5c9821b, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 16b6db4a9c108d14089b98a0e7d32e6f, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 9d0b95cce1b0733419d07a668c159526, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 98fed606f958b90439e8d344beaa5ee6, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 430a3f5b9799c4f4db2a098ded724378, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 0c7e5d5297b92e543b7e31f27a4252a8, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 8bc541bace115c949b4818513080b7fb, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 75ca0cd6cb169b54bbd15bf686c149e9, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 776c5e7f270c8d1479f0097da0633b9f, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: 8a916042f3745af44856a0585cc6be12, type: 3}
-    Weight: 0
-  - Tile: {fileID: 7621110184390123065, guid: f302a9e715eaffa4988e452c945c1c05, type: 3}
-    Weight: 0
+  Dimensions: 0
+  TileObjects: []
   GridComponents: []
-  CellObj: {fileID: 7609837407635238841, guid: f9e39d17235f17947bc53d2d347f9eb5, type: 3}
-  DrunkardsWalk: {fileID: 2142298278}
+  CellObj: {fileID: 0}
+  DrunkardsWalk: {fileID: 0}
 --- !u!4 &2142298280
 Transform:
   m_ObjectHideFlags: 0
@@ -3563,7 +3486,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 1881560474}
   - {fileID: 104395059}
   - {fileID: 2142298280}
   - {fileID: 7966092683460521829}

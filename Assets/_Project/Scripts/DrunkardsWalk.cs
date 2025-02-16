@@ -9,104 +9,87 @@ public class DrunkardsWalk : MonoBehaviour
     public Vector3Int StartPoint;
     public GameObject PathPrefab;
 
-    public void GenerateDrunkardsWalk(int dimensions, List<Cell> grid) {
-        Vector3Int currentPosition = StartPoint;
-        int startIndex = currentPosition.x + currentPosition.z * dimensions;
-        Cell startCell = grid[startIndex];
-
-        if (startCell != null && !startCell.IsPath) {
-            startCell.MarkAsPath(); // Markiere die Zelle als Pfad
-            
-            // // Falls ein Tile gesetzt wird, wähle eine Standard-Pfad-Option
-            // if (startCell.TileOptions != null && startCell.TileOptions.Length > 0) {
-            //     // Finde das passende PathTile (z. B. mit Tag "PathTile")
-            //     var pathTile = startCell.TileOptions.FirstOrDefault(bundle => 
-            //         bundle.Tile.CompareTag("PathTile"));
-            //
-            //     if (pathTile.Tile != null) {
-            //         // Instanziere das PathPrefab am Startpunkt
-            Vector3 worldPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
-            Instantiate(PathPrefab, worldPosition, PathPrefab.transform.rotation);
-            //
-            //         // Setze die Zelle auf die Auswahl des PathTiles und markiere sie als "kollabiert"
-            //         startCell.TileOptions = new TileWeightBundle[] { pathTile };
-            //         startCell.Collapsed = true;
-            //     } else {
-            //         Debug.LogWarning($"No valid PathTile found for StartPoint at {currentPosition}");
-            //     }
-            // }
-        }
-
-        Debug.Log($"Start Generating Drunkard's Walk from {currentPosition}");
-
-    if (!IsPositionValid(currentPosition, dimensions)) {
-        Debug.LogError($"Invalid start position: {currentPosition}");
+    public void GenerateDrunkardsWalk(int dimensions, List<Cell> grid)
+{
+    Vector3Int currentPosition = StartPoint;
+    if (!IsPositionValid(currentPosition, dimensions))
+    {
+        Debug.LogError($"[DrunkardsWalk] Ungültige Startposition: {currentPosition}");
         return;
     }
 
-    // Die erste Richtung wird zufällig gewählt
-    int lastDirection = Random.Range(0, 4);
+    int startIndex = currentPosition.x + currentPosition.z * dimensions;
+    Cell startCell = grid[startIndex];
 
-    for (int i = 0; i < Steps; i++) {
+    if (startCell == null || startCell.Collapsed) {
+        Debug.LogError($"[DrunkardsWalk] Startzelle ist null oder bereits kollabiert: {currentPosition}");
+        return;
+    }
+
+    // Markiere die Startzelle sicher ohne Überschreiben
+    Debug.Log($"[DrunkardsWalk] Markiere Startzelle als Weg: {currentPosition}");
+    MarkCellAsPath(startCell, currentPosition);
+
+    int lastDirection = Random.Range(0, 4); // Zufällige Richtung beim Start
+
+    for (int i = 0; i < Steps; i++)
+    {
         int currentDirection;
-
-        // Wähle eine neue Richtung, die nicht die entgegengesetzte zur letzten ist
         do {
             currentDirection = Random.value > TurnProbability ? lastDirection : Random.Range(0, 4);
         } while (IsOppositeDirection(lastDirection, currentDirection));
 
-        // Bewege dich basierend auf der aktuellen Richtung
-        switch (currentDirection) {
-            case 0: // Nach links
-                currentPosition.x = Mathf.Max(0, currentPosition.x - 1);
-                if (currentPosition.x == 0) i--;
-                break;
-            case 1: // Nach rechts
-                currentPosition.x = Mathf.Min(dimensions - 1, currentPosition.x + 1);
-                if (currentPosition.x == dimensions - 1) i--;
-                break;
-            case 2: // Vorwärts
-                currentPosition.z = Mathf.Min(dimensions - 1, currentPosition.z + 1);
-                if (currentPosition.z == dimensions - 1) i--;
-                break;
-            case 3: // Rückwärts
-                currentPosition.z = Mathf.Max(0, currentPosition.z - 1);
-                if (currentPosition.z == 0) i--;
-                break;
+        // Bewege dich in die gewählte Richtung
+        switch (currentDirection)
+        {
+            case 0: currentPosition.x = Mathf.Max(0, currentPosition.x - 1); break; // Links
+            case 1: currentPosition.x = Mathf.Min(dimensions - 1, currentPosition.x + 1); break; // Rechts
+            case 2: currentPosition.z = Mathf.Min(dimensions - 1, currentPosition.z + 1); break; // Vorwärts
+            case 3: currentPosition.z = Mathf.Max(0, currentPosition.z - 1); break; // Rückwärts
         }
 
-        if (!IsPositionValid(currentPosition, dimensions)) {
-            Debug.LogError($"Invalid position at step {i}: {currentPosition}");
+        if (!IsPositionValid(currentPosition, dimensions))
+        {
+            Debug.LogWarning($"[DrunkardsWalk] Ungültige Position nach Schritt {i}: {currentPosition}");
             continue;
         }
 
-        // Indiziere die Position in der Grid-Liste
+        // Hole die neue Zelle und überprüfe ihren Status
         int gridIndex = currentPosition.x + currentPosition.z * dimensions;
-        var cell = grid[gridIndex];
+        Cell cell = grid[gridIndex];
 
-        if (cell == null) {
-            Debug.LogError($"Cell is null at position: {currentPosition}");
+        if (cell == null)
+        {
+            Debug.LogError($"[DrunkardsWalk] Konnte keine Zelle an Position {currentPosition} finden.");
             continue;
         }
 
-        if (cell.Collapsed) {
-            Debug.Log($"Cell already collapsed at: {currentPosition}");
+        if (cell.Collapsed)
+        {
+            Debug.Log($"[DrunkardsWalk] Zelle bereits kollabiert: {currentPosition}");
             continue;
         }
 
-        // Markiere die Zelle als Weg
-        cell.Collapsed = true;
-        
-        if(!cell.IsPath) cell.MarkAsPath();
+        // Markiere die Zelle sicher
+        Debug.Log($"[DrunkardsWalk] Markiere Zelle als Weg: {currentPosition}");
+        MarkCellAsPath(cell, currentPosition);
 
-        // Instanziere die grafische Darstellung des Wegs
-        Vector3 worldPosition = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
-        Instantiate(PathPrefab, worldPosition, PathPrefab.transform.rotation);
+        lastDirection = currentDirection; // Aktualisiere die Richtung
+    }
+}
 
-        // Aktualisiere die letzte Richtung
-        lastDirection = currentDirection;
+// Helper-Methode, um Zellen sicher zu markieren
+private void MarkCellAsPath(Cell cell, Vector3Int position)
+{
+    if (cell.Collapsed) {
+        Debug.LogWarning($"[MarkCellAsPath] Fehler: Konnte kollabierte Zelle nicht erneut markieren: {position}.");
+        return;
     }
-    }
+
+    cell.MarkAsPath(); // Markiere Zelle als Weg
+    Vector3 worldPosition = new Vector3(position.x, position.y, position.z);
+    Instantiate(PathPrefab, worldPosition, PathPrefab.transform.rotation); // Platzierung des visuellen Pfads
+}
 
 // Helferfunktion, um zu überprüfen, ob zwei Richtungen entgegengesetzt sind
     private bool IsOppositeDirection(int dir1, int dir2) {

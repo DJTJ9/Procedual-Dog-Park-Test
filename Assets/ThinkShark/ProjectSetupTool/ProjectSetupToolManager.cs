@@ -32,6 +32,7 @@ namespace ThinkShark.ProjectSetupTool
             packageInstaller.LoadPackageFolder();
             packageInstaller.LoadEssentialPackages(); // Essentials laden
             packageInstaller.LoadPackages(packageInstaller.PackageFolder);
+            packageInstaller.LoadPackageManagerPackageNames();
             scriptImporter.LoadTemplates(scriptImporter.templateFolder);
         }
 
@@ -40,6 +41,7 @@ namespace ThinkShark.ProjectSetupTool
             folderManager.SaveFolderNames();
             packageInstaller.SavePackageFolder();
             packageInstaller.SaveEssentialPackages(); // Essentials speichern
+            packageInstaller.SavePackageManagerPackageNames();
         }
 
         private void OnGUI() {
@@ -51,12 +53,17 @@ namespace ThinkShark.ProjectSetupTool
             // Inhalte basierend auf dem aktiven Tab
             switch (selectedTab) {
                 case Tab.FolderManager:
+                    folderManager.LoadFolderNames();
                     folderManager.Draw();
                     break;
                 case Tab.PackageInstaller:
+                    packageInstaller.LoadEssentialPackages();
+                    packageInstaller.LoadPackageManagerPackagesFromTxt();
+                    packageInstaller.LoadPackageManagerPackageNames();
                     packageInstaller.Draw();
                     break;
                 case Tab.ScriptImporter:
+                    scriptImporter.LoadTemplates(scriptImporter.templateFolder);
                     scriptImporter.Draw();
                     break;
             }
