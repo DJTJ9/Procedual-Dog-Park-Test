@@ -261,6 +261,8 @@ GameObject:
   - component: {fileID: 104395059}
   - component: {fileID: 104395061}
   - component: {fileID: 104395060}
+  - component: {fileID: 104395062}
+  - component: {fileID: 104395063}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -306,9 +308,72 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104395057}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99267d5281538b8489f3bfe36260c213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &104395062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104395057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743e9fda65c828848b74d54c89629b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dimensions: 20
+  TileObjects:
+  - Tile: {fileID: 2060010359385170977, guid: 3152b812a12af3f4bbf20a5c292599e1, type: 3}
+    Weight: 100
+  - Tile: {fileID: 2838271202629704503, guid: a4088b0a38233a9409bcee1e29ba6235, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: a3543838b7a30ea45adcd29a50f3468a, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: e297d074e86688641bebb498a1621e09, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 4d112c7a222466c418ef65807af3077d, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: ee65daed067b2d849a7143831cf997c5, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 22c3371f097f765418bde737737292d0, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 3abc5461f1fa0d04baaec4380bc6a66d, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 97bab9e16d22af349954e596bc455f2d, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 1d8eed0286537c645b2eca0060e7bae5, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: d3022b545a9bde64a80ed61d07378e06, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: c5e265ba02820224a9b9cbcb7cf979e6, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: c738e882f22b9e04ea145c47cb887343, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: b5fc08983da27484ebd0d2d101d5b27e, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 38380a8900f070449884196beecf9c71, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 95025d9d0e3241d42a3571e9eaa43ce8, type: 3}
+    Weight: 0
+  - Tile: {fileID: 2060010359385170977, guid: 85b4c7799db96a348b99403763ef2016, type: 3}
+    Weight: 0
+  GridComponents: []
+  CellObj: {fileID: 4059871046168062458, guid: da1441d64ff04b341a7ca83a04059fe1, type: 3}
+  DrunkardsWalk: {fileID: 104395060}
+--- !u!114 &104395063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104395057}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea1018f92141c843bcd1835e4b3c51d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Dimensions: 20
@@ -2759,11 +2824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99267d5281538b8489f3bfe36260c213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dimensions: 0
-  TileObjects: []
-  GridComponents: []
-  CellObj: {fileID: 0}
-  DrunkardsWalk: {fileID: 0}
 --- !u!4 &2142298280
 Transform:
   m_ObjectHideFlags: 0

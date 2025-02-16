@@ -212,9 +212,9 @@ namespace ThinkShark.ProjectSetupTool
             selectAll = EditorGUILayout.Toggle(selectAll, GUILayout.Width(15));
             GUILayout.Label("Select All");
 
-            if (GUILayout.Button("Save Essentials", GUILayout.Width(150))) {
-                SaveEssentialPackages();
-            }
+            // if (GUILayout.Button("Save Essentials", GUILayout.Width(150))) {
+            //     SaveEssentialPackages();
+            // }
 
             GUILayout.EndHorizontal();
 
