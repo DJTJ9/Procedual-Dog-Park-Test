@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PathNeighbour
   - PathTile
+  - Land
+  - Flammable
   layers:
   - Default
   - TransparentFX
@@ -13,11 +15,11 @@ TagManager:
   - 
   - Water
   - UI
+  - Ground
   - 
   - 
   - 
-  - 
-  - 
+  - Snow Deformation
   - 
   - 
   - 

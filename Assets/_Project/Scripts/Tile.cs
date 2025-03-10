@@ -42,15 +42,12 @@ public struct TileWeightBundle : IEquatable<TileWeightBundle>
     public Tile Tile;
     public int Weight;
     
-    // Überschreibe == Operator
     public static bool operator == (TileWeightBundle a, TileWeightBundle b)
     {
         return a.Tile == b.Tile;
         // return a.Tile == b.Tile && a.Weight == b.Weight;
         
-        // OPerator für TIle Vergleich überschreiben!!!!
     }
-    // Überschreibe != Operator (immer zusammen mit == benötigt)
     public static bool operator !=(TileWeightBundle a, TileWeightBundle b)
     {
         return !(a == b);

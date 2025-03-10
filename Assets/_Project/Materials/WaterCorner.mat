@@ -24,6 +24,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise_Texture_1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise_Texture_2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WaterTexture:
         m_Texture: {fileID: 2800000, guid: 7f936b3129926b94a90354048da04d70, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -42,13 +54,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Foam_Distance: 0.5
     - _GrasHardness: -0.83
+    - _Metallic: 0
+    - _Noise_Scale: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Refraction: 0.05
+    - _Smoothness: 0.5
+    - _Tranparency: 0.5
     - _WaterHardness: 0.06
+    - _Wave_Speed: 0.01
     m_Colors:
-    - _GrasColor: {r: 0.10753868, g: 0.6320754, b: 0.092426084, a: 0}
+    - _Foam_Color: {r: 1, g: 1, b: 1, a: 0.2705882}
+    - _GrasColor: {r: 1, g: 0.8922599, b: 0.6839622, a: 0}
     - _WaterColor: {r: 0.08223564, g: 0.26662654, b: 0.8301887, a: 0}
+    - _WaterColor_1: {r: 0.082352884, g: 0.26666668, b: 0.8313726, a: 0.0627451}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5180641351304008216

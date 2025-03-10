@@ -57,17 +57,17 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SwayAmount: 0.01
+    - _SwayAmount: 0.001
     - _SwayNoiseScale: 0.1
-    - _TrampleSize: 0.7
-    - _TrampleStrength: 1.15
+    - _TrampleSize: 1.69
+    - _TrampleStrength: 0.69
     m_Colors:
     - _Color1: {r: 0, g: 0.36862746, b: 0.0627451, a: 0}
     - _Color2: {r: 0.1254902, g: 0.6039216, b: 0.1764706, a: 0}
     - _GrasColor: {r: 0.10753868, g: 0.6320754, b: 0.09242612, a: 0}
     - _GrasTopColor: {r: 0.1254902, g: 0.6039216, b: 0.1764706, a: 0}
-    - _GrassBottomColor: {r: 0, g: 0.36862746, b: 0.0627451, a: 0}
-    - _GrassTopColor: {r: 0.1254902, g: 0.6039216, b: 0.1764706, a: 0}
-    - _TramplePosition: {r: -5.204117, g: 0.5, b: 11.565682, a: 0}
+    - _GrassBottomColor: {r: 0.07971394, g: 1, b: 0, a: 0}
+    - _GrassTopColor: {r: 0.11395097, g: 1, b: 0, a: 0}
+    - _TramplePosition: {r: -1.0933958, g: 1, b: -4.4641576, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

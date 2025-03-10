@@ -15,10 +15,48 @@ MonoBehaviour:
   sceneDatas_byGuid:
     keys:
     - 99c9720ab356a0642a771bea13969a05
+    - 9a35ecc12b88e304c998c40675369357
+    - 99e3ae23cd92af1439417b7dea191003
     values:
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-104395057-0
+        - globalObjectIdString: GlobalObjectId_V1-2-99c9720ab356a0642a771bea13969a05-330585543-0
         values:
         - colorIndex: 0
+          iconNameOrGuid: Terrain Icon
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-9a35ecc12b88e304c998c40675369357-1385632970-0
+        - globalObjectIdString: GlobalObjectId_V1-2-9a35ecc12b88e304c998c40675369357-2035500412-0
+        - globalObjectIdString: GlobalObjectId_V1-2-9a35ecc12b88e304c998c40675369357-2143005694-0
+        - globalObjectIdString: GlobalObjectId_V1-2-9a35ecc12b88e304c998c40675369357-2099319265-0
+        - globalObjectIdString: GlobalObjectId_V1-2-9a35ecc12b88e304c998c40675369357-744527483-0
+        - globalObjectIdString: GlobalObjectId_V1-2-9a35ecc12b88e304c998c40675369357-1667030600-0
+        - globalObjectIdString: GlobalObjectId_V1-2-9a35ecc12b88e304c998c40675369357-58754115-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
+        - colorIndex: 0
+          iconNameOrGuid: DirectionalLight Icon
+        - colorIndex: 0
+          iconNameOrGuid: Terrain Icon
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 0
+          iconNameOrGuid: ParticleSystem Icon
+        - colorIndex: 7
+          iconNameOrGuid: AvatarMask On Icon
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-99e3ae23cd92af1439417b7dea191003-1474526332-0
+        - globalObjectIdString: GlobalObjectId_V1-2-99e3ae23cd92af1439417b7dea191003-2870728995139718307-1312907624
+        values:
+        - colorIndex: 2
+          iconNameOrGuid: 
+        - colorIndex: 4
           iconNameOrGuid: Terrain Icon

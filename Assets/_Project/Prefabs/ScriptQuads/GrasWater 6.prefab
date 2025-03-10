@@ -117,20 +117,20 @@ MonoBehaviour:
   - Tile: {fileID: 2060010359385170977, guid: 4d112c7a222466c418ef65807af3077d, type: 3}
     Weight: 10
   - Tile: {fileID: 2060010359385170977}
-    Weight: 100
+    Weight: 50
   - Tile: {fileID: 2060010359385170977, guid: b5fc08983da27484ebd0d2d101d5b27e, type: 3}
-    Weight: 100
+    Weight: 1
   - Tile: {fileID: 2060010359385170977, guid: 95025d9d0e3241d42a3571e9eaa43ce8, type: 3}
     Weight: 100
   DownNeighbours:
   - Tile: {fileID: 2060010359385170977}
-    Weight: 100
+    Weight: 50
   - Tile: {fileID: 2060010359385170977, guid: d3022b545a9bde64a80ed61d07378e06, type: 3}
     Weight: 10
   - Tile: {fileID: 2060010359385170977, guid: c738e882f22b9e04ea145c47cb887343, type: 3}
-    Weight: 100
+    Weight: 1
   - Tile: {fileID: 2060010359385170977, guid: 85b4c7799db96a348b99403763ef2016, type: 3}
-    Weight: 100
+    Weight: 1
   LeftNeighbours:
   - Tile: {fileID: 2060010359385170977, guid: ee65daed067b2d849a7143831cf997c5, type: 3}
     Weight: 10
@@ -147,3 +147,5 @@ MonoBehaviour:
     Weight: 10
   - Tile: {fileID: 2060010359385170977, guid: 97bab9e16d22af349954e596bc455f2d, type: 3}
     Weight: 10
+  - Tile: {fileID: 2060010359385170977, guid: f8dbc2c8e377823489a9f4f389cf250d, type: 3}
+    Weight: 100

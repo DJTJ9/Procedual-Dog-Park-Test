@@ -18,10 +18,10 @@ public class GrassCreator : MonoBehaviour
     public GameObject Ball;
     public Material GrassMaterial;
 
+    private MeshRenderer grassRenderer;
+    
     private const int Zero = 0;
     private const int One = 1;
-
-    private MeshRenderer grassRenderer;
 
     void Start() {
        InitializeGras();
@@ -29,16 +29,25 @@ public class GrassCreator : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        GrassMaterial.SetVector("_TramplePosition", Ball.transform.position);
+        if (GrassPrefab != null)
+        {
+            if (grassRenderer != null)
+            {
+                // Materialfarbe ändern
+                grassRenderer.sharedMaterial.SetColor("_GrassTopColor", TopGrassColor);
+                grassRenderer.sharedMaterial.SetColor("_GrassBottomColor", BottomGrassColor);
+                
+                grassRenderer.sharedMaterial.SetVector("_TramplePosition", Ball.transform.position);
+            }
+        }
     }
 
     [Button] 
-    private void InitializeGras() {
-        grassRenderer = GetComponent<MeshRenderer>();
-        grassRenderer.material.SetColor("_GrassTopColor", TopGrassColor);
-        grassRenderer.material.SetColor("_GrassBottomColor", BottomGrassColor);
-        // grassRenderer.sharedMaterial.SetColor("_GrassTopColor", Color.green);
-        // grassRenderer.sharedMaterial.SetColor("_GrassBottomColor", Color.magenta);
+    private void InitializeGras() { 
+        grassRenderer = GrassPrefab.GetComponent<MeshRenderer>();
+        grassRenderer.sharedMaterial.SetColor("_GrassTopColor", TopGrassColor);
+        grassRenderer.sharedMaterial.SetColor("_GrassBottomColor", BottomGrassColor);
+
         for (int z = -GrassSize; z <= GrassSize; z++) {
             for (int x = -GrassSize; x <= GrassSize; x++) {
                 Vector3 position = new Vector3(x / GrassSubdivisions + Random.Range(-GrassRandomDistribution, GrassRandomDistribution), Zero,

@@ -115,17 +115,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpNeighbours:
   - Tile: {fileID: 2060010359385170977, guid: 22c3371f097f765418bde737737292d0, type: 3}
-    Weight: 0
+    Weight: 10
   DownNeighbours:
   - Tile: {fileID: 2060010359385170977, guid: ee65daed067b2d849a7143831cf997c5, type: 3}
-    Weight: 0
+    Weight: 10
   - Tile: {fileID: 2060010359385170977, guid: 97bab9e16d22af349954e596bc455f2d, type: 3}
-    Weight: 0
+    Weight: 10
   LeftNeighbours:
   - Tile: {fileID: 2060010359385170977, guid: 97bab9e16d22af349954e596bc455f2d, type: 3}
-    Weight: 0
+    Weight: 10
   - Tile: {fileID: 2060010359385170977, guid: 1d8eed0286537c645b2eca0060e7bae5, type: 3}
-    Weight: 0
+    Weight: 10
   RightNeighbours:
   - Tile: {fileID: 2060010359385170977, guid: 22c3371f097f765418bde737737292d0, type: 3}
-    Weight: 0
+    Weight: 10

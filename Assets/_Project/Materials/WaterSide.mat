@@ -42,11 +42,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _FoamDensity: 5
+    - _FoamSpeed: 1
+    - _FoamThinkness: 5
+    - _MaxWaveHeight: 0.5
+    - _Noise_Scale: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WaveDensity: 6
+    - _WaveHeight: 0.5
+    - _Wave_Speed: 0.5
     m_Colors:
-    - _GrasColor: {r: 0.10588236, g: 0.6313726, b: 0.09411766, a: 0}
+    - _FlowDirection: {r: 0.1, g: 0.5, b: 0, a: 0}
+    - _Foam_Color: {r: 0.2705882, g: 0.8862745, b: 1, a: 0}
+    - _GrasColor: {r: 1, g: 0.8922599, b: 0.6839622, a: 0}
     - _WaterColor: {r: 0.08235294, g: 0.26666668, b: 0.8313726, a: 0}
+    - _WaterColor_1: {r: 0.082352884, g: 0.26666668, b: 0.8313726, a: 0.0627451}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1338441276507856380

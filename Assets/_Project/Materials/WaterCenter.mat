@@ -49,6 +49,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 77cfbb42743144e46b0f06fbb99b639f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Water_Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -64,7 +68,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _AngularSpeed: 1
+    - _FoamDensity: 5
+    - _FoamSpeed: 1
+    - _FoamThinkness: 5
     - _Foam_Distance: 0.5
+    - _MaxWaveHeight: 0.2
     - _Metallic: 0
     - _NoiseScale: 1
     - _Noise_Scale: 0.02
@@ -74,10 +82,14 @@ Material:
     - _Smoothness: 0.5
     - _Tranparency: 0.5
     - _WaterYDisplacement: -0.7
+    - _WaveDensity: 6
+    - _WaveHeight: 0.05
     - _Wave_Speed: 0.01
+    - _Waveheight: 0.02
     m_Colors:
+    - _FlowDirection: {r: 0.1, g: 0.5, b: 0, a: 0}
     - _Foam_Color: {r: 1, g: 1, b: 1, a: 0}
     - _ScrollSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _WaterColor: {r: 0.08235294, g: 0.26666668, b: 0.8313726, a: 0}
+    - _WaterColor: {r: 0.14244394, g: 0.29887018, b: 0.9150943, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
