@@ -343,7 +343,7 @@ public class MapGeneration : MonoBehaviour
             GameObject randomPrefab = DogParkPrefabs[UnityEngine.Random.Range(0, DogParkPrefabs.Count)];
 
             // Zufällige Rotation (0, 90, 180, 270 Grad)
-            float randomYRotation = UnityEngine.Random.Range(0, 4) * 90f; // Werte: 0, 90, 180, 270
+            float randomYRotation = UnityEngine.Random.Range(0, 360); // Werte: 0, 90, 180, 270
 
             // Instanziiere das Prefab mit der zufälligen Rotation
             Instantiate(randomPrefab, randomInnerCell.transform.position, Quaternion.Euler(0f, randomYRotation, 0f));

@@ -2763,7 +2763,7 @@
         "x"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -5706,7 +5706,7 @@
     "m_Title": "Render Texture Deformation",
     "m_Position": {
         "x": -1303.0001220703125,
-        "y": -117.00000762939453
+        "y": -117.0
     }
 }
 
@@ -5864,8 +5864,8 @@
     "m_ObjectId": "927290ac2b354f9b8c578c8d9e394389",
     "m_Title": "Snow Accumulation",
     "m_Position": {
-        "x": -1802.0003662109375,
-        "y": -279.0000305175781
+        "x": -1802.0001220703125,
+        "y": -279.0
     }
 }
 
@@ -5900,7 +5900,7 @@
     "m_Title": "GrowDirection",
     "m_Position": {
         "x": -2358.000244140625,
-        "y": 258.0000305175781
+        "y": 257.99993896484377
     }
 }
 
@@ -6087,8 +6087,8 @@
     "m_ObjectId": "99f69ea5cb7c45d3adafd43249b52980",
     "m_Title": "Sparkle",
     "m_Position": {
-        "x": -599.000244140625,
-        "y": 874.0000610351563
+        "x": -599.0001220703125,
+        "y": 873.9999389648438
     }
 }
 
@@ -7207,7 +7207,7 @@
     "m_ObjectId": "bc35e0c089dc44879bcd0e70d9466dd5",
     "m_Title": "Base Map",
     "m_Position": {
-        "x": -1289.0001220703125,
+        "x": -1289.0,
         "y": 700.0000610351563
     }
 }
@@ -7491,8 +7491,8 @@
     "m_ObjectId": "c72ed204bad743179d63297fc3b1d2a9",
     "m_Title": "Snow Color",
     "m_Position": {
-        "x": -1704.000244140625,
-        "y": 1126.0001220703125
+        "x": -1704.0001220703125,
+        "y": 1126.000244140625
     }
 }
 
@@ -7834,10 +7834,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -802.0001220703125,
-            "y": 373.0,
-            "width": 128.0,
-            "height": 94.00003051757813
+            "x": -768.0,
+            "y": 373.0000305175781,
+            "width": 127.99993896484375,
+            "height": 94.0
         }
     },
     "m_Slots": [
